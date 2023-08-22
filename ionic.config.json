@@ -1,0 +1,7 @@
+{
+  "name": "ionic-login-cadastro-dashboard",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
