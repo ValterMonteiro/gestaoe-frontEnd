@@ -9,7 +9,6 @@ export class AppComponent {
     { title: 'Login', url: '/login', icon: 'person' },
     { title: 'Cadastro', url: '/cadastro', icon: 'arrow-up-circle' },
     { title: 'Dashboard', url: '/dashboard', icon: 'bar-chart'},
-    { title: 'Cadastro De Produto', url: '/cadastro-de-produto', icon: 'bar-chart'},
     { title: 'Relatorios', url: '/relatorio', icon: 'bar-chart'},
     { title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
     { title: 'Outbox', url: '/folder/outbox', icon: 'paper-plane' },

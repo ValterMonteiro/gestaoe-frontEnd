@@ -25,10 +25,6 @@ const routes: Routes = [
     loadChildren: () => import('./pagina/dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
   {
-    path: 'cadastro-de-produto',
-    loadChildren: () => import('./pagina/cadastro-de-produto/cadastro-de-produto.module').then( m => m.CadastroDeProdutoPageModule)
-  },
-  {
     path: 'relatorio',
     loadChildren: () => import('./pagina/relatorio/relatorio.module').then( m => m.RelatorioPageModule)
   }
