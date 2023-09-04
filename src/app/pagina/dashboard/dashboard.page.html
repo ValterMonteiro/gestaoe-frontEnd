@@ -15,18 +15,27 @@
   </ion-header>
 
   <ion-list>
-    <ion-item *ngFor="let produto of produtos">
+    <ion-item>
+      <ion-label >Pequisar Produto</ion-label>
+      <ion-input (ionChange)="handleChange($event)" ></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="results.length > 0">
+    <ion-item *ngFor="let produto of results">
       <ion-label>{{ produto.descricao }}</ion-label>
       <ion-note slot="end">Preço de Custo: R$ {{ produto.precoCusto }}</ion-note>
     </ion-item>
   </ion-list>
 
-
-  <ion-list>
+  <ion-list *ngIf="results.length === 0">
     <ion-item>
-      <ion-label>Pequisar Produto</ion-label>
-      <ion-input ></ion-input>
+      <ion-label>Nenhum resultado encontrado.</ion-label>
     </ion-item>
+  </ion-list>
+
+  <!-- Graficos -->
+  <ion-list>
     <ion-item>
       <ion-img src="/assets/grafico1.png"></ion-img>
     </ion-item>
@@ -34,6 +43,7 @@
       <ion-img src="/assets/grafico2.png"></ion-img>
     </ion-item>
   </ion-list>
+
   <ion-button >Relatório</ion-button>
   <ion-button >Novo Produto</ion-button>
 </ion-content>
