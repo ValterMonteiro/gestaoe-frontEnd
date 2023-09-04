@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { GestaoE_Service } from 'src/app/gestaoe-back-end.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class DashboardPage implements OnInit {
   data: any[] = []; // Armazene os dados originais aqui
   results: any[] = []; // Armazene os resultados da pesquisa aqui
 
-  constructor(private gestaoe_produtos: GestaoE_Service) {}
+  constructor(private gestaoe_produtos: GestaoE_Service, public nav: NavController) {}
 
   ngOnInit() {
     this.gestaoe_produtos.getDados().subscribe(
@@ -31,5 +32,9 @@ export class DashboardPage implements OnInit {
     this.results = this.data.filter((produto) =>
       produto.descricao.toLowerCase().includes(query)
     );
+  }
+
+  abrirPagina(x: string) {
+    this.nav.navigateForward(x);
   }
 }

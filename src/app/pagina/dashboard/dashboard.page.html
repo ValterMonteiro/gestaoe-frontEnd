@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>dashboard</ion-title>
+    <ion-title>Dashboard</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -44,6 +44,5 @@
     </ion-item>
   </ion-list>
 
-  <ion-button >Relatório</ion-button>
-  <ion-button >Novo Produto</ion-button>
+  <ion-button expand="block" (click)="abrirPagina('relatorio')">Relatório</ion-button>
 </ion-content>

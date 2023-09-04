@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-relatorio',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RelatorioPage implements OnInit {
 
-  constructor() { }
+  constructor(public nav: NavController) { }
+
+  abrirPagina(x: string) {
+    this.nav.navigateForward(x);
+  }
 
   ngOnInit() {
   }
