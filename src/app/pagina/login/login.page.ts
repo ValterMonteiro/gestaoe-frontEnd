@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, ToastController } from '@ionic/angular';
+import { MenuController, NavController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,17 @@ export class LoginPage implements OnInit {
   }
 
   //NavController é responsável por gerenciar a navegabilidade
-  constructor(public nav: NavController, private toast: ToastController) { }
+  constructor(public nav: NavController, private toast: ToastController, public menu: MenuController) { }
+
+  //Quando entrar na página de Login
+  ionViewWillEnter() {
+    this.menu.enable(false);
+  }
+  //Quando sair da página de Login
+  ionViewDidLeave() {
+    this.menu.enable(true);
+  }
+
 
   async presentToast(position: 'top' | 'middle' | 'bottom') {
     const toast = await this.toast.create({
@@ -29,9 +39,9 @@ export class LoginPage implements OnInit {
     this.nav.navigateForward(x);
   }
 
-  acessar(  ) {
+  acessar() {
     if (this.autenticacao.usuario == "admin" && this.autenticacao.senha == "admin") {
-    this.abrirPagina('dashboard');
+      this.abrirPagina('dashboard');
     } else {
       this.presentToast('middle');
     }
