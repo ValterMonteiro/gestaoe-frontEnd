@@ -16,27 +16,28 @@
 
   <ion-list>
     <ion-item>
-      <ion-label >Pequisar Produto</ion-label>
-      <ion-input (ionChange)="handleChange($event)" ></ion-input>
+      <ion-label position="floating">Pequisar Produto</ion-label>
+      <ion-input (ionChange)="handleChange($event)"></ion-input>
     </ion-item>
   </ion-list>
 
-  <ion-list *ngIf="results.length > 0">
-    <ion-item *ngFor="let produto of results">
+  <ion-list *ngIf="produtos.length > 0">
+    <ion-item *ngFor="let produto of produtos">
       <ion-label>{{ produto.descricao }}</ion-label>
-      <ion-note slot="end">Preço de Custo: R$ {{ produto.precoCusto }}</ion-note>
+      <!-- <ion-note slot="end">Preço de Custo: R$ {{ produto.precoCusto }}</ion-note> -->
     </ion-item>
   </ion-list>
 
-  <ion-list *ngIf="results.length === 0">
+  <ion-list *ngIf="produtos.length === 0">
     <ion-item>
       <ion-label>Nenhum resultado encontrado.</ion-label>
     </ion-item>
   </ion-list>
 
   <!-- Graficos -->
-  <ion-list>
-    <ion-item>
+  <ion-list *ngIf="produtos.length > 0">
+    <ion-item *ngFor="let produto of produtos">
+      <ion-note slot="end">Preço de Custo: R$ {{ produto.precoCusto }}</ion-note>
       <ion-img src="/assets/grafico1.png"></ion-img>
     </ion-item>
     <ion-item>
