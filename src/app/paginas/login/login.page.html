@@ -1,0 +1,21 @@
+<ion-content [fullscreen]="true">
+
+  <ion-title size="large">GestãoE</ion-title>
+
+  <form>
+    <ion-item>
+      <ion-label position="floating">Usuário</ion-label>
+      <!-- [(ngModel)]="autenticacao.usuario" -->
+      <ion-input type="text" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <!-- [(ngModel)]="autenticacao.senha" -->
+      <ion-input type="password" ></ion-input>
+    </ion-item>
+    <ion-button expand="block" (click)="acessar()">Acessar</ion-button>
+  </form>
+
+  <ion-button expand="block" fill="outline" (click)="cadastrar()">Cadastrar</ion-button>
+
+</ion-content>

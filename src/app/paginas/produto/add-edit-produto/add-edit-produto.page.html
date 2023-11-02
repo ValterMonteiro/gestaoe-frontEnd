@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Produto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- <ion-fab-button (click)="addEditProduto()"></ion-fab-button> -->
+
+  <form [formGroup]="produtoForm" *ngIf="produtoForm" (ngSubmit)="submit()">
+    <ion-item>
+      <ion-label position="floating">Data</ion-label>
+      <ion-input formControlName="data" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descrição</ion-label>
+      <ion-input formControlName="descricao" type="text"></ion-input>
+    </ion-item>
+
+    <ion-button shape="round" expand="block" *ngIf="modoDeEdicao" padding type="submit">
+      Cadastrar
+    </ion-button>
+
+    <ion-button shape="round" expand="block" *ngIf="!modoDeEdicao" padding type="submit" >
+      Atualizar
+      </ion-button>
+  </form>
+</ion-content>

@@ -14,7 +14,9 @@ export class LoginPage implements OnInit {
   }
 
   //NavController é responsável por gerenciar a navegabilidade
-  constructor(public nav: NavController, private toast: ToastController, public menu: MenuController) { }
+  constructor(public navController: NavController,
+    private toast: ToastController,
+    public menu: MenuController) { }
 
   //Quando entrar na página de Login
   ionViewWillEnter() {
@@ -35,16 +37,18 @@ export class LoginPage implements OnInit {
     await toast.present();
   }
 
-  abrirPagina(x: string) {
-    this.nav.navigateForward(x);
+  cadastrar() {
+    this.navController.navigateForward('usuario');
   }
 
   acessar() {
     if (this.autenticacao.usuario == "admin" && this.autenticacao.senha == "admin") {
-      this.abrirPagina('dashboard');
+      this.navController.navigateForward('sel-produto');
     } else {
-      this.presentToast('middle');
+      this.navController.navigateForward('middle');
     }
+//acessar direto, sem validação
+    this.navController.navigateForward('sel-produto');
   }
 
   ngOnInit() {

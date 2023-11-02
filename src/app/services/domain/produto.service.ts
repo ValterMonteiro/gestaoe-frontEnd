@@ -16,6 +16,29 @@ export class ProdutoService {
   findAll(): Observable<ProdutoDTO[]> {
     return this.http.get<ProdutoDTO[]>(`${API_CONFIG.baseUrl}/produtos`)
   }
+
+
+  insert(produto: ProdutoDTO){
+    return this.http.post(`${API_CONFIG.baseUrl}/produtos`, produto, {
+    observe: 'response', responseType: 'text'
+    });
+    }
+
+    findById(id: number) : Observable<ProdutoDTO> {
+      return this.http.get<ProdutoDTO>(`${API_CONFIG.baseUrl}/produtos/${id}`);
+      }
+
+      update(produto: ProdutoDTO){
+        return this.http.put(`${API_CONFIG.baseUrl}/produtos/${produto.id}`,
+                                produto, {
+                                    observe: 'response',
+                                    responseType: 'text'
+                                });
+    }
+
+    delete(id: number){
+        return this.http.delete(`${API_CONFIG.baseUrl}/produtos/${id}`)
+    }
 }
 
 

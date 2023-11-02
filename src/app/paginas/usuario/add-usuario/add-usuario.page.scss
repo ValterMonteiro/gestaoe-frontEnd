@@ -1,0 +1,19 @@
+small.error-message {
+  color: var(--ion-color-primary);
+  }
+
+  .invalid {
+    border-bottom: 1px solid #FF6153;
+    }
+
+    ion-list.errors-summary {
+      border: 1px solid var(--ion-color-primary);
+      background-color: white;
+      margin-bottom: 0px;
+      }
+      ion-label.errors-summary {
+      color: var(--ion-color-primary);
+      text-align: center;
+      margin-bottom: 0px;
+      margin-top: opx;
+      }

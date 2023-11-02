@@ -1,0 +1,97 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Cadastrar Usuário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <form #form="ngForm" [formGroup]="usuarioForm" (ngSubmit)="submit()">
+
+    <!-- Validação pelo TypeScript -->
+    <!-- <ion-list class="errors-summary" *ngIf="hasErrors">
+      <ion-label class="errors-summary" *ngFor="let error of errorsMessage">
+        {{error}}<br>
+      </ion-label>
+    </ion-list> -->
+
+    <!-- <div>
+      <ng-container *ngFor="let validation of validationMessages.nome">
+        <div *ngIf="usuarioForm.get('nome')?.errors">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div> -->
+    <!-- <div>
+      <ng-container *ngFor="let validation of validationMessages.email">
+        <div *ngIf="usuarioForm.get('email')?.errors">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div> -->
+
+    <!-- <ion-list class="errors-summary" *ngIf="hasErrors">
+      <ion-label class="errors-summary" *ngFor="let errorMessage of errorsMessage">
+        {{errorMessage}}<br>
+      </ion-label>
+    </ion-list> -->
+
+    <ion-item>
+      <ion-label *ngFor="let errorMessage of errorsMessage">
+        Erro: {{errorMessage}}
+      </ion-label>
+      <ion-input formControlName="Nome" type="text" placeholder="Nome" [class.invalid]="!usuarioForm.controls['nome'].valid &&
+                        usuarioForm.controls['nome'].touched">
+      </ion-input>
+      <small class="error-message" *ngIf="usuarioForm.get('nome')?.errors &&
+      form.submitted">
+        Nome é obrigatóriio. Informe o nome (5 a 50 caracteres)!
+      </small>
+    </ion-item>
+
+    <ion-item>
+      <ion-label *ngFor="let errorMessage of errorsMessage">
+        Erro: {{errorMessage}}
+      </ion-label>
+      <ion-input formControlName="cpf" type="text" placeholder="CPF" [class.invalid]="!usuarioForm.controls['nome'].valid &&
+                      usuarioForm.controls['nome'].touched">
+      </ion-input>
+      <small class="error-message" *ngIf="usuarioForm.get('cpf')?.errors &&
+      form.submitted">
+        CPF é obrigatório. Informe o CPF!
+      </small>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Telefone</ion-label>
+      <ion-input formControlName="telefone" type="text" placeholder="Telefone"></ion-input>
+      <small class="error-message" *ngIf="usuarioForm.get('telefone')?.errors &&
+      form.submitted">
+        Informe o telefone
+      </small>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input formControlName="email" type="email" [(ngModel)]="pessoa.email"></ion-input>
+      <!-- *ngIf="usuarioForm.get('email')?.errors &&
+      form.submitted" -->
+      <small class="error-message">
+        Informe um email válido
+      </small>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input formControlName="senha" type="password" [(ngModel)]="pessoa.senha"></ion-input>
+      <small class="error-message" *ngIf="usuarioForm.get('senha')?.errors &&
+      form.submitted">
+        Informe uma senha válida
+      </small>
+    </ion-item>
+    <ion-button shape="round" expand="block" padding type="submit" (click)="presentToast('top')">Salvar</ion-button>
+  </form>
+
+</ion-content>
