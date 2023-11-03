@@ -39,6 +39,10 @@ export class SelProdutoPage implements OnInit {
     this.navController.navigateForward('add-edit-produto');
   }
 
+  dashboardProduto(){
+    this.navController.navigateForward('dashboard');
+  }
+
   excluirProduto(id: number){
     this.produtoService.delete(id)
                            .subscribe({
@@ -91,7 +95,5 @@ export class SelProdutoPage implements OnInit {
     console.log(this.resultsById);
   } */
 
-  abrirPagina(x: string) {
-    this.navController.navigateForward(x);
-  }
+  
 }
