@@ -32,6 +32,10 @@ const routes: Routes = [
     path: 'add-edit-produto/:id',
     loadChildren: () => import('./paginas/produto/add-edit-produto/add-edit-produto.module').then( m => m.AddEditProdutoPageModule)
   },
+  {
+    path: 'dashboard/:id',
+    loadChildren: () => import('./paginas/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
 
 ];
 
