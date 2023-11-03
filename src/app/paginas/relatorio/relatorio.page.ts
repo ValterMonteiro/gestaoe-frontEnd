@@ -17,22 +17,23 @@ export class RelatorioPage implements OnInit {
 
   relatorio!: RelatorioDTO[];
 
-  constructor(public nav: NavController/* , private gestaoe_produtos: GestaoE_Service */,
-  public relatorioService: RelatorioService) { }
+  constructor(
+    public nav: NavController,
+    public relatorioService: RelatorioService) { }
 
-//findall().subscribe(res => {}, err => {})
-ionViewDidEnter(){
-  this.relatorioService.findAll()
-                         .subscribe(response => {
-                            this.relatorio = response;
-                            console.log(response);
-                         }, error => {
-                            console.log(error);
-                         });
-}
+  //findall().subscribe(res => {}, err => {})
+  ionViewDidEnter() {
+    this.relatorioService.findAll()
+      .subscribe(response => {
+        this.relatorio = response;
+        console.log(response);
+      }, error => {
+        console.log(error);
+      });
+  }
 
-  abrirPagina(x: string) {
-    this.nav.navigateForward(x);
+  voltarDashboard(x: string) {
+    this.nav.navigateForward('dashboard');
   }
 
   ngOnInit() {
