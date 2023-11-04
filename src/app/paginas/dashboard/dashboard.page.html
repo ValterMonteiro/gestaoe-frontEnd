@@ -5,18 +5,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- <ion-list *ngIf="produtos.length === 0">
-    <ion-item>
-      <ion-label>Nenhum resultado encontrado.</ion-label>
-    </ion-item>
-  </ion-list> -->
 
   <!-- Graficos -->
-  <!-- *ngIf="produtos.length > 0" -->
   <ion-list >
-    <!-- *ngFor="let produto of produtos" -->
     <ion-item >
-      <!-- <ion-note slot="end">Preço de Custo: R$ {{ produto.precoCusto }}</ion-note> -->
       <ion-img src="/assets/grafico1.png"></ion-img>
     </ion-item>
     <ion-item>
@@ -25,4 +17,5 @@
   </ion-list>
 
   <ion-button expand="block" (click)="relatorioProduto('relatorio')">Relatório</ion-button>
+  <ion-button expand="block" (click)="sair('sair')">Sair</ion-button>
 </ion-content>

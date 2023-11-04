@@ -15,6 +15,9 @@ export class DashboardPage implements OnInit {
     this.navController.navigateForward('relatorio');
   }
 
+  sair(x: string) {
+    this.navController.navigateForward('sel-produto');
+  }
 
   ngOnInit() {}
 
