@@ -23,7 +23,9 @@ export class RelatorioPage implements OnInit {
 
   //findall().subscribe(res => {}, err => {})
   ionViewDidEnter() {
-    this.relatorioService.findAll()
+
+
+    this.relatorioService.findAll(1)
       .subscribe(response => {
         this.relatorio = response;
         console.log(response);
@@ -33,7 +35,11 @@ export class RelatorioPage implements OnInit {
   }
 
   voltarDashboard(x: string) {
-    this.nav.navigateForward('dashboard');
+    this.nav.navigateForward('dashboard/${id');
+  }
+
+  sair(x: string) {
+    this.nav.navigateForward('sel-produto');
   }
 
   ngOnInit() {

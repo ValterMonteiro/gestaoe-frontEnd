@@ -30,19 +30,20 @@
     <!-- Loop através dos dados do relatório e exiba-os nas colunas -->
     <ion-row *ngFor="let item of relatorio">
       <ion-col size="auto">{{ item.data }}</ion-col>
-      <ion-col size="auto">{{ item.id_produto }}</ion-col>
+      <ion-col size="auto">{{ item.idProduto }}</ion-col>
       <ion-col size="auto">{{ item.descricao }}</ion-col>
-      <ion-col size="auto">{{ item.entrada_quantidade }}</ion-col>
-      <ion-col size="auto">{{ item.entrada_valor_unit }}</ion-col>
-      <ion-col size="auto">{{ item.entrada_valor_total }}</ion-col>
-      <ion-col size="auto">{{ item.saida_quantidade }}</ion-col>
-      <ion-col size="auto">{{ item.saida_valor_unit }}</ion-col>
-      <ion-col size="auto">{{ item.saida_valor_total }}</ion-col>
-      <ion-col size="auto">{{ item.saldo_quantidade }}</ion-col>
-      <ion-col size="auto">{{ item.saldo_valor_medio }}</ion-col>
-      <ion-col size="auto">{{ item.saldo_valor_total }}</ion-col>
+      <ion-col size="auto">{{ item.entradaQuantidade }}</ion-col>
+      <ion-col size="auto">{{ item.entradaValorUnit }}</ion-col>
+      <ion-col size="auto">{{ item.entradaValorTotal }}</ion-col>
+      <ion-col size="auto">{{ item.saidaQuantidade }}</ion-col>
+      <ion-col size="auto">{{ item.saidaValorUnit }}</ion-col>
+      <ion-col size="auto">{{ item.saidaValorTotal }}</ion-col>
+      <ion-col size="auto">{{ item.saldoQuantidade }}</ion-col>
+      <ion-col size="auto">{{ item.saldoValorMedio }}</ion-col>
+      <ion-col size="auto">{{ item.saldoValorTotal }}</ion-col>
     </ion-row>
   </ion-grid>
 
   <ion-button expand="block" (click)="voltarDashboard('dashboard')">Voltar</ion-button>
+  <ion-button expand="block" (click)="sair('sair')">Sair</ion-button>
 </ion-content>

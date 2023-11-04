@@ -13,8 +13,8 @@ export class RelatorioService {
 
   //Iniciando a consulta na API
   //Crie um método findAll() e passe a URL do mapeamento
-  findAll(): Observable<RelatorioDTO[]> {
-    return this.http.get<RelatorioDTO[]>(`${API_CONFIG.baseUrl}/relatorio`)
+  findAll(id: number): Observable<RelatorioDTO[]> {
+    return this.http.get<RelatorioDTO[]>(`${API_CONFIG.baseUrl}/produtos/controleDeEstoque/${id}`)
   }
 }
 
