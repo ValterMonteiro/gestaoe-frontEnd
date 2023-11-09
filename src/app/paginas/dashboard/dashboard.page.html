@@ -6,15 +6,32 @@
 
 <ion-content [fullscreen]="true">
 
+
+
   <!-- Graficos -->
-  <ion-list >
+  <ion-list *ngFor="let item of relatorio">
+
+    <ion-item>
+      <ion-label>
+        <h2>{{ item.descricao }}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
     <ion-item >
       <ion-img src="/assets/grafico1.png"></ion-img>
     </ion-item>
+
     <ion-item>
       <ion-img src="/assets/grafico2.png"></ion-img>
     </ion-item>
-  </ion-list>
+
+    <canvas baseChart width="400" height="400"
+    [type]="'line'"
+    [data]="lineChartData"
+    [options]="lineChartOptions"
+    [legend]="lineChartLegend">
+  </canvas>
 
   <ion-button expand="block" (click)="relatorioProduto('relatorio')">Relatório</ion-button>
   <ion-button expand="block" (click)="sair('sair')">Sair</ion-button>
