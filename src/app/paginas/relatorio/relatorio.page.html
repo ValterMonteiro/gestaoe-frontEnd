@@ -13,34 +13,34 @@
 
   <ion-grid [fixed]="true">
     <ion-row>
-      <ion-col size="auto">Data</ion-col>
-      <ion-col size="auto">Código</ion-col>
-      <ion-col size="auto">Descrição</ion-col>
-      <ion-col size="auto">EntradaQtidade</ion-col>
-      <ion-col size="auto"> EntradaValorUn</ion-col>
-      <ion-col size="auto"> EntradaValorTotal</ion-col>
-      <ion-col size="auto">SaidaQtidade</ion-col>
-      <ion-col size="auto"> SaidaValorUn</ion-col>
-      <ion-col size="auto"> SaidaValorTotal</ion-col>
-      <ion-col size="auto">SaldoQtidade</ion-col>
-      <ion-col size="auto">SaldoValorMedio</ion-col>
-      <ion-col size="auto"> SaldoValorTotal</ion-col>
+      <ion-col size="1">Data</ion-col>
+      <ion-col size="1">Código</ion-col>
+      <ion-col size="1">Descrição</ion-col>
+      <ion-col size="1">EntradaQtidade</ion-col>
+      <ion-col size="1"> EntradaValorUn</ion-col>
+      <ion-col size="1"> EntradaValorTotal</ion-col>
+      <ion-col size="1">SaidaQtidade</ion-col>
+      <ion-col size="1"> SaidaValorUn</ion-col>
+      <ion-col size="1"> SaidaValorTotal</ion-col>
+      <ion-col size="1">SaldoQtidade</ion-col>
+      <ion-col size="1">SaldoValorMedio</ion-col>
+      <ion-col size="1"> SaldoValorTotal</ion-col>
     </ion-row>
 
     <!-- Loop através dos dados do relatório e exiba-os nas colunas -->
     <ion-row *ngFor="let item of relatorio">
-      <ion-col size="auto">{{ item.data }}</ion-col>
-      <ion-col size="auto">{{ item.idProduto }}</ion-col>
-      <ion-col size="auto">{{ item.descricao }}</ion-col>
-      <ion-col size="auto">{{ item.entradaQuantidade }}</ion-col>
-      <ion-col size="auto">{{ item.entradaValorUnit }}</ion-col>
-      <ion-col size="auto">{{ item.entradaValorTotal }}</ion-col>
-      <ion-col size="auto">{{ item.saidaQuantidade }}</ion-col>
-      <ion-col size="auto">{{ item.saidaValorUnit }}</ion-col>
-      <ion-col size="auto">{{ item.saidaValorTotal }}</ion-col>
-      <ion-col size="auto">{{ item.saldoQuantidade }}</ion-col>
-      <ion-col size="auto">{{ item.saldoValorMedio }}</ion-col>
-      <ion-col size="auto">{{ item.saldoValorTotal }}</ion-col>
+      <ion-col size="1">{{ item.data }}</ion-col>
+      <ion-col size="1">{{ item.idProduto }}</ion-col>
+      <ion-col size="1">{{ item.descricao }}</ion-col>
+      <ion-col size="1">{{ item.entradaQuantidade }}</ion-col>
+      <ion-col size="1">{{ item.entradaValorUnit }}</ion-col>
+      <ion-col size="1">{{ item.entradaValorTotal }}</ion-col>
+      <ion-col size="1">{{ item.saidaQuantidade }}</ion-col>
+      <ion-col size="1">{{ item.saidaValorUnit }}</ion-col>
+      <ion-col size="1">{{ item.saidaValorTotal }}</ion-col>
+      <ion-col size="1">{{ item.saldoQuantidade }}</ion-col>
+      <ion-col size="1">{{ item.saldoValorMedio }}</ion-col>
+      <ion-col size="1">{{ item.saldoValorTotal }}</ion-col>
     </ion-row>
   </ion-grid>
 
