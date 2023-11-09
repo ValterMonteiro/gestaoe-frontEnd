@@ -13,7 +13,7 @@ import { ProdutoService } from 'src/app/services/domain/produto.service';
 export class SelProdutoPage implements OnInit {
 
   produtos!: ProdutoDTO[];
-  /* produtos: ProdutoDTO[] = []; */
+  
   /* data: any[] = []; */ // Armazene os dados originais aqui
   /* results: any[] = []; */ // Armazene os resultados da pesquisa aqui
   /* resultsById: any[] = []; */
@@ -95,5 +95,5 @@ export class SelProdutoPage implements OnInit {
     console.log(this.resultsById);
   } */
 
-  
+
 }
