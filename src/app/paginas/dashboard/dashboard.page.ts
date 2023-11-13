@@ -16,11 +16,11 @@ import { RelatorioService } from 'src/app/services/domain/relatorio.service';
 })
 export class DashboardPage implements OnInit {
 
-  produtos!: ProdutoDTO[];
   data: any[] = [];
   results: any[] = [];
   resultsById: any[] = [];
 
+  produtos!: ProdutoDTO[];
   relatorio!: RelatorioDTO[];
 
   /* dashboard teste */
@@ -37,7 +37,7 @@ export class DashboardPage implements OnInit {
     datasets: [
       {
         data: [ 65, 59, 80, 81, 56, 55, 40 ],
-        label: 'Series A',
+        label: 'Compras',
         fill: true,
         tension: 0.5,
         borderColor: 'black',
@@ -50,8 +50,9 @@ export class DashboardPage implements OnInit {
   };
   public lineChartLegend = true;
 
-  /* dashboard teste */
+  /*fim dashboard teste */
 
+  id!: number;
 
   constructor(
     public relatorioService: RelatorioService,
@@ -60,24 +61,32 @@ export class DashboardPage implements OnInit {
     private route: ActivatedRoute,
     private httpClient: HttpClient) {
       this.localData();
+      this.id = Number(this.route.snapshot.paramMap.get('id')) || 0;
+      console.log('ID dashboard:', this.id);
      }
 
-  /* testeDashboard() {
-    this.localData();
-  } */
-
-  /* ionViewDidEnter() {
-    this.relatorioService.findAll(1)
+  ionViewDidEnter() {
+    const id: number = Number(this.route.snapshot.paramMap.get('id'));
+    console.log("O ID passado é " + id);
+    this.relatorioService.findAll(id)
       .subscribe(response => {
         this.relatorio = response;
         console.log(response);
       }, error => {
         console.log(error);
       });
-  } */
 
-  relatorioProduto(x: string) {
-    this.navController.navigateForward('relatorio');
+      this.produtoService.findAll()
+      .subscribe({
+        next:
+          (response) => this.produtos = response,
+        error:
+          (error) => console.log(error)
+      });
+  }
+
+  relatorioProduto(id: number) {
+    this.navController.navigateForward(`relatorio/${id}`);
   }
 
   sair(x: string) {
