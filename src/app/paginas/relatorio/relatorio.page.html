@@ -1,9 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Relatorio</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -44,6 +38,6 @@
     </ion-row>
   </ion-grid>
 
-  <ion-button expand="block" (click)="voltarDashboard('dashboard')">Voltar</ion-button>
+  <ion-button expand="block" (click)="voltarDashboard(id)">Voltar</ion-button>
   <ion-button expand="block" (click)="sair('sair')">Sair</ion-button>
 </ion-content>
