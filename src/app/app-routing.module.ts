@@ -25,7 +25,7 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/produto/sel-produto/sel-produto.module').then( m => m.SelProdutoPageModule)
   },
   {
-    path: 'relatorio',
+    path: 'relatorio/:id',
     loadChildren: () => import('./paginas/relatorio/relatorio.module').then( m => m.RelatorioPageModule)
   },
   {
