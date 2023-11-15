@@ -10,9 +10,9 @@
 
   <!-- Graficos -->
   <!-- <ion-list *ngFor="let item of relatorio"> -->
-  <ion-list *ngFor="let item of relatorio">
+  <ion-list *ngFor="let item of relatorio; let i = index">
 
-    <ion-item>
+    <ion-item *ngIf="i === 0 ">
       <ion-label>
         <h2>{{ item.descricao }}</h2>
       </ion-label>
@@ -20,14 +20,30 @@
   </ion-list>
 
   <!-- Dashboard Compra -->
-  <canvas baseChart width="400" height="400" [type]="'line'" [data]="lineChartData" [options]="lineChartOptions"
-    [legend]="lineChartLegend">
+  <!-- [labels]="chartLabels" -->
+  <canvas baseChart [datasets]="chartData" [type]="chartType" [labels]="chartLabels">
   </canvas>
 
-  <!-- Dashboard Vendas -->
-  <canvas baseChart width="400" height="400" [type]="'line'" [data]="lineChartData" [options]="lineChartOptions"
+  <ion-list>
+    <ion-item>
+      <ion-item>
+        <ion-label>Tipo do Gráfico</ion-label>
+        <ion-select [(ngModel)]="chartType">
+          <ion-select-option value="line">Linha</ion-select-option>
+          <ion-select-option value="bar">Barra</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-item>
+  </ion-list>
+
+  <!-- <canvas baseChart width="400" height="400" [type]="'line'" [data]="lineChartData" [options]="lineChartOptions"
     [legend]="lineChartLegend">
-  </canvas>
+  </canvas> -->
+
+  <!-- Dashboard Vendas -->
+  <!-- <canvas baseChart width="400" height="400" [type]="'line'" [data]="lineChartData" [options]="lineChartOptions"
+    [legend]="lineChartLegend">
+  </canvas> -->
 
   <ion-button expand="block" (click)="relatorioProduto(id)">Relatório</ion-button>
   <ion-button expand="block" (click)="sair('sair')">Sair</ion-button>
