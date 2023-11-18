@@ -2,17 +2,51 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
-        <ion-list id="inbox-list">
-          <ion-list-header>GestãoE</ion-list-header>
 
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
-              routerLinkActive="selected">
-              <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
+        <div class="menu-header-bg"></div>
+        <div class="header-content">
+          <!-- alterar conforme perfil do usuário -->
+          <!-- <ion-label>Alterar conforme perfil do usuário</ion-label> -->
+          <img src="../assets/images/valter_img.png">
+          <ion-label>
+            <h2>Kit Harington</h2>
+            <p>kit.harington@gmail.com</p>
+          </ion-label>
+        </div>
+        <!-- Botão de perfil -->
+        <div class="action-button">
+          <ion-button>
+            <ion-icon slot="start" name="person"></ion-icon>
+            Perfil
+          </ion-button>
+        </div>
+
+        <!-- Comandos -->
+        <ion-menu-toggle auto-hide="false">
+          <ion-list class="menu-items" lines="none">
+            <!-- <ion-label>Alterar conforme itens do GestaoE</ion-label> -->
+            <ion-item>
+              <ion-icon name="duplicate-outline"></ion-icon>
+              Cadastro
             </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
+            <ion-item class="active">
+              <ion-icon name="cart"></ion-icon>
+              Compras
+            </ion-item>
+            <ion-item>
+              <ion-icon name="cube"></ion-icon>
+              Produtos
+            </ion-item>
+            <ion-item>
+              <ion-icon name="bar-chart-outline"></ion-icon>
+              Vendas
+            </ion-item>
+            <ion-item>
+              <ion-icon name="exit-outline"></ion-icon>
+              Sign out
+            </ion-item>
+          </ion-list>
+        </ion-menu-toggle>
 
       </ion-content>
     </ion-menu>

@@ -36,6 +36,10 @@ const routes: Routes = [
     path: 'dashboard/:id',
     loadChildren: () => import('./paginas/dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
+  {
+    path: 'home',
+    loadChildren: () => import('./paginas/home/home.module').then( m => m.HomePageModule)
+  },
 
 ];
 
