@@ -13,7 +13,7 @@ import { ProdutoService } from 'src/app/services/domain/produto.service';
 export class SelProdutoPage implements OnInit {
 
   produtos!: ProdutoDTO[];
-  
+
   /* data: any[] = []; */ // Armazene os dados originais aqui
   /* results: any[] = []; */ // Armazene os resultados da pesquisa aqui
   /* resultsById: any[] = []; */
@@ -51,6 +51,10 @@ export class SelProdutoPage implements OnInit {
                               error:
                                 (error) => console.log(error)
                            });
+  }
+
+  sair(x: string) {
+    this.navController.navigateForward('home');
   }
 
   ngOnInit() {
