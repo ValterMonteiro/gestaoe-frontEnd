@@ -43,12 +43,12 @@ export class LoginPage implements OnInit {
 
   acessar() {
     if (this.autenticacao.usuario == "admin" && this.autenticacao.senha == "admin") {
-      this.navController.navigateForward('sel-produto');
+      this.navController.navigateForward('home');
     } else {
       this.navController.navigateForward('middle');
     }
 //acessar direto, sem validação
-    this.navController.navigateForward('sel-produto');
+    this.navController.navigateForward('home');
   }
 
   ngOnInit() {
