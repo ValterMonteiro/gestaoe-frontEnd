@@ -26,11 +26,13 @@ export class DashboardPage implements OnInit {
   chartDataCompras: ChartDataset[] = [{ data: [], label: 'Compras' }];
   chartDataVendas: ChartDataset[] = [{ data: [], label: 'Vendas' }];
   chartDataGiroDeEstoque: ChartDataset[] = [];
+  chartDataGiroDeEstoqueTeste: ChartDataset[] = [];
   chartType: ChartType = 'line';
   chartLabels: Array<any> = [];
   id!: number;
   custoDasVendas!: number;
   estoqueMedio!: number;
+
 
   constructor(
     public relatorioService: RelatorioService,
@@ -80,11 +82,13 @@ export class DashboardPage implements OnInit {
     this.relatorioService.findAll(id)
       .subscribe(
         response => {
+          this.relatorio = response;
           this.chartLabels = [];
           this.chartData = [];
           this.chartDataCompras = [];
           this.chartDataVendas = [];
           this.chartDataGiroDeEstoque = [];
+          this.chartDataGiroDeEstoqueTeste = [];
           this.calculateStockTurnover();
           this.chartData.push({ data: [], label: 'Compras' }, { data: [], label: 'Vendas' });
           this.chartDataCompras.push({ data: [], label: 'Compras' });
@@ -104,7 +108,6 @@ export class DashboardPage implements OnInit {
 
             /* grafico de vendas */
             this.chartDataVendas[0].data.push(response[i].saidaQuantidade);
-
           }
         }, error => {
           console.log(error);
@@ -112,16 +115,38 @@ export class DashboardPage implements OnInit {
   }
 
   calculateStockTurnover() {
-    const estoqueInicial = 5000; // Valor de exemplo
-    const estoqueFinal = 7000; // Valor de exemplo
-    this.custoDasVendas = 15000; // Valor de exemplo
-    this.estoqueMedio = (estoqueInicial + estoqueFinal) / 2;
 
-    const giroDeEstoque = this.custoDasVendas / this.estoqueMedio;
-    console.log('Giro de Estoque:', giroDeEstoque);
+    if (this.relatorio && this.relatorio.length > 0) {
 
-    // Agora, vamos inserir esse valor no gráfico de giro de estoque
-    this.chartDataGiroDeEstoque.push({ data: [giroDeEstoque], label: 'Giro de Estoque' });
+      // Considerando que relatorioDTO possui propriedades entradaQuantidade e saidaQuantidade
+      const entradaQuantidades = this.relatorio.map(item => item.entradaQuantidade);
+      const saidaQuantidades = this.relatorio.map(item => item.saidaQuantidade);
+
+      const somaEntradas = entradaQuantidades.reduce((acc, val) => acc + val, 0);
+      const somaSaidas = saidaQuantidades.reduce((acc, val) => acc + val, 0);
+
+
+      //const estoqueInicial = 500; //500 Valor de exemplo
+      const estoqueInicial = 0; //500 Valor de exemplo
+      console.log('Estoque Inicial:', estoqueInicial);
+      //const estoqueFinal = 300; //300 Valor de exemplo
+      const estoqueFinal = (estoqueInicial + somaEntradas) - somaSaidas;
+      console.log('Estoque Final:', estoqueFinal);
+      //this.custoDasVendas = 300; // 300 Valor de exemplo
+      this.custoDasVendas = somaSaidas;
+      console.log('Custo das Vendas:', this.custoDasVendas);
+
+      //calculo do estoque médio
+      this.estoqueMedio = (estoqueInicial + estoqueFinal) / 2;
+      console.log('Estoque Médio:', this.estoqueMedio);
+
+      //calculo do giro de estoque
+      const giroDeEstoque = this.custoDasVendas / this.estoqueMedio;
+      console.log('Giro de Estoque:', giroDeEstoque);
+
+      // Agora, vamos inserir esse valor no gráfico de giro de estoque
+      this.chartDataGiroDeEstoque.push({ data: [giroDeEstoque], label: 'Giro de Estoque' });
+    }
   }
 
   relatorioProduto(id: number) {
@@ -131,15 +156,5 @@ export class DashboardPage implements OnInit {
   sair(x: string) {
     this.navController.navigateForward('sel-produto');
   }
-
-  /* calculo do estoque médio */
-  /* calcularEstoqueMedio(estoqueInicial: number, estoqueFinal: number): number {
-    return (estoqueInicial + estoqueFinal) / 2;
-  } */
-
-  // Exemplo de utilização
-  /* const estoque = new DashboardPage(15000, 5000, 20000, 7000); // Valores de exemplo
-  const giroDeEstoque = estoque.calcularGiroDeEstoque();
-console.log("Giro de Estoque:", giroDeEstoque); */
 
 }
