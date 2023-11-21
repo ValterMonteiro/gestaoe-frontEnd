@@ -19,15 +19,19 @@ export class DashboardPage implements OnInit {
 
   produtos!: ProdutoDTO[];
   relatorio!: RelatorioDTO[];
-  chartData: ChartDataset[] = [
+  chartDataComprasEVendas: ChartDataset[] = [
     { data: [], label: 'Compras' },
     { data: [], label: 'Vendas' }
   ];
   chartDataCompras: ChartDataset[] = [{ data: [], label: 'Compras' }];
   chartDataVendas: ChartDataset[] = [{ data: [], label: 'Vendas' }];
   chartDataGiroDeEstoque: ChartDataset[] = [];
-  chartDataGiroDeEstoqueTeste: ChartDataset[] = [];
-  chartType: ChartType = 'line';
+  chartDataNivelDeEstoque: ChartDataset[] = [];
+  chartTypeComprasEVendas: ChartType = 'line';
+  chartTypeCompras: ChartType = 'bar';
+  chartTypeVendas: ChartType = 'bar';
+  chartTypeGiroDeEstoque: ChartType = 'line';
+  chartTypeNivelDeEstoque: ChartType = 'line';
   chartLabels: Array<any> = [];
   id!: number;
   custoDasVendas!: number;
@@ -84,13 +88,14 @@ export class DashboardPage implements OnInit {
         response => {
           this.relatorio = response;
           this.chartLabels = [];
-          this.chartData = [];
+          this.chartDataComprasEVendas = [];
           this.chartDataCompras = [];
           this.chartDataVendas = [];
           this.chartDataGiroDeEstoque = [];
-          this.chartDataGiroDeEstoqueTeste = [];
+          this.chartDataNivelDeEstoque = [];
           this.calculateStockTurnover();
-          this.chartData.push({ data: [], label: 'Compras' }, { data: [], label: 'Vendas' });
+          this.calculaNivelDeEstoque();
+          this.chartDataComprasEVendas.push({ data: [], label: 'Compras' }, { data: [], label: 'Vendas' });
           this.chartDataCompras.push({ data: [], label: 'Compras' });
           this.chartDataVendas.push({ data: [], label: 'Vendas' });
 
@@ -100,8 +105,8 @@ export class DashboardPage implements OnInit {
             this.chartLabels.push(response[i].data);
 
             /* grafico de compras e vendas */
-            this.chartData[0].data.push(response[i].entradaQuantidade);
-            this.chartData[1].data.push(response[i].saidaQuantidade);
+            this.chartDataComprasEVendas[0].data.push(response[i].entradaQuantidade);
+            this.chartDataComprasEVendas[1].data.push(response[i].saidaQuantidade);
 
             /* grafico de compras */
             this.chartDataCompras[0].data.push(response[i].entradaQuantidade);
@@ -146,6 +151,42 @@ export class DashboardPage implements OnInit {
 
       // Agora, vamos inserir esse valor no gráfico de giro de estoque
       this.chartDataGiroDeEstoque.push({ data: [giroDeEstoque], label: 'Giro de Estoque' });
+    }
+  }
+
+  calculaNivelDeEstoque() {
+
+    if (this.relatorio && this.relatorio.length > 0) {
+
+      // Considerando que relatorioDTO possui propriedades entradaQuantidade e saidaQuantidade
+      const entradaQuantidades = this.relatorio.map(item => item.entradaQuantidade);
+      const saidaQuantidades = this.relatorio.map(item => item.saidaQuantidade);
+
+      const somaEntradas = entradaQuantidades.reduce((acc, val) => acc + val, 0);
+      const somaSaidas = saidaQuantidades.reduce((acc, val) => acc + val, 0);
+
+
+      //const estoqueInicial = 500; //500 Valor de exemplo
+      const estoqueInicial = 0; //500 Valor de exemplo
+      console.log('Estoque Inicial:', estoqueInicial);
+      //const estoqueFinal = 300; //300 Valor de exemplo
+      const estoqueFinal = (estoqueInicial + somaEntradas) - somaSaidas;
+      console.log('Estoque Final:', estoqueFinal);
+      //this.custoDasVendas = 300; // 300 Valor de exemplo
+      this.custoDasVendas = somaSaidas;
+      console.log('Custo das Vendas:', this.custoDasVendas);
+
+      //calculo do estoque médio
+      this.estoqueMedio = (estoqueInicial + estoqueFinal) / 2;
+      console.log('Estoque Médio:', this.estoqueMedio);
+
+      //calculo do nivel de estoque
+      const nivelDeEstoque = estoqueFinal;
+      console.log('Nivel de Estoque:', nivelDeEstoque);
+
+
+      // Agora, vamos inserir esse valor no gráfico de giro de estoque
+      this.chartDataNivelDeEstoque.push({ data: [nivelDeEstoque], label: 'Nivel de Estoque' });
     }
   }
 

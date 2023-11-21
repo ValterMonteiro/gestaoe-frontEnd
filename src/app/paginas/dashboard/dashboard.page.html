@@ -23,13 +23,13 @@
         <!-- Linha 1, coluna 1 -->
         <!-- Grafico de compras e vendas -->
         <ion-col size="12">
-          <canvas baseChart [datasets]="chartData" [type]="chartType" [labels]="chartLabels">
+          <canvas baseChart [datasets]="chartDataComprasEVendas" [type]="chartTypeComprasEVendas" [labels]="chartLabels">
           </canvas>
           <ion-list>
             <ion-item>
               <ion-item class="teste">
                 <ion-label class="tipoDeGrafico">Tipo do Gráfico</ion-label>
-                <ion-select [(ngModel)]="chartType">
+                <ion-select [(ngModel)]="chartTypeComprasEVendas">
                   <ion-select-option value="line">Linha</ion-select-option>
                   <ion-select-option value="bar">Barra</ion-select-option>
                 </ion-select>
@@ -43,14 +43,14 @@
       <ion-row>
         <!-- Linha 2, coluna 1 -->
         <!-- grafico de compras -->
-        <ion-col size="4">
-          <canvas baseChart [datasets]="chartDataCompras" [type]="chartType" [labels]="chartLabels">
+        <ion-col size="6">
+          <canvas baseChart [datasets]="chartDataCompras" [type]="chartTypeCompras" [labels]="chartLabels">
           </canvas>
           <ion-list>
             <ion-item>
               <ion-item>
                 <ion-label class="tipoDeGrafico">Tipo do Gráfico</ion-label>
-                <ion-select [(ngModel)]="chartType">
+                <ion-select [(ngModel)]="chartTypeCompras">
                   <ion-select-option value="line">Linha</ion-select-option>
                   <ion-select-option value="bar">Barra</ion-select-option>
                 </ion-select>
@@ -61,14 +61,35 @@
 
         <!-- Linha 2, coluna 2 -->
         <!-- Grafico de Vendas -->
-        <ion-col size="4">
-          <canvas baseChart [datasets]="chartDataVendas" [type]="chartType" [labels]="chartLabels">
+        <ion-col size="6">
+          <canvas baseChart [datasets]="chartDataVendas" [type]="chartTypeVendas" [labels]="chartLabels">
           </canvas>
           <ion-list>
             <ion-item>
               <ion-item>
                 <ion-label>Tipo do Gráfico</ion-label>
-                <ion-select [(ngModel)]="chartType">
+                <ion-select [(ngModel)]="chartTypeVendas">
+                  <ion-select-option value="line">Linha</ion-select-option>
+                  <ion-select-option value="bar">Barra</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <!-- Linha 3 -->
+      <ion-row>
+        <!-- Linha 3, coluna 1 -->
+        <!-- grafico de nivel de estoque -->
+        <ion-col size="6">
+          <canvas baseChart [datasets]="chartDataNivelDeEstoque" [type]="chartTypeNivelDeEstoque" [labels]="chartLabels">
+          </canvas>
+          <ion-list>
+            <ion-item>
+              <ion-item>
+                <ion-label class="tipoDeGrafico">Tipo do Gráfico</ion-label>
+                <ion-select [(ngModel)]="chartTypeNivelDeEstoque">
                   <ion-select-option value="line">Linha</ion-select-option>
                   <ion-select-option value="bar">Barra</ion-select-option>
                 </ion-select>
@@ -77,16 +98,16 @@
           </ion-list>
         </ion-col>
 
-        <!-- Linha 2, coluna 3 -->
+        <!-- Linha 3, coluna 2 -->
         <!-- Grafico giro de estoque -->
-        <ion-col size="4">
-          <canvas baseChart [datasets]="chartDataGiroDeEstoque" [type]="chartType" [labels]="chartLabels">
+        <ion-col size="6">
+          <canvas baseChart [datasets]="chartDataGiroDeEstoque" [type]="chartTypeGiroDeEstoque" [labels]="chartLabels">
           </canvas>
           <ion-list>
             <ion-item>
               <ion-item>
                 <ion-label>Tipo do Gráfico</ion-label>
-                <ion-select [(ngModel)]="chartType">
+                <ion-select [(ngModel)]="chartTypeGiroDeEstoque">
                   <ion-select-option value="line">Linha</ion-select-option>
                   <ion-select-option value="bar">Barra</ion-select-option>
                 </ion-select>
